@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: #ffffff;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  color: #050505;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #8f00ff;
+  color: #ffffff;
+}
+
+/* Desktop custom scrollbar */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f8f7fa;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d9c8ff;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8f00ff;
+  }
+}
+
+.container-ideax {
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .container-ideax {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.text-gradient-purple {
+  background: linear-gradient(90deg, #8f00ff, #b85cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom cursor (desktop only, applied via JS toggling body class) */
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #050505;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.cursor-dot[data-theme='dark'] {
+  background: #ffffff;
+}
+
+.cursor-dot.cursor-hover {
+  width: 7px;
+  height: 7px;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(143, 0, 255, 0.35);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: left 0.15s ease-out, top 0.15s ease-out, width 0.2s ease, height 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cursor-ring[data-theme='dark'] {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.cursor-ring.cursor-hover {
+  width: 34px;
+  height: 34px;
+  border-color: #8f00ff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
