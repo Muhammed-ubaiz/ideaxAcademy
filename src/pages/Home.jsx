@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Phone, Mail, MapPin, Globe } from 'lucide-react'
 import SEO from '../components/SEO'
 import Reveal from '../components/Reveal'
 import Button from '../components/Button'
@@ -11,7 +11,6 @@ import SectionTitle from '../components/SectionTitle'
 import CurriculumAccordion from '../components/CurriculumAccordion'
 import AIFlowVisual from '../components/AIFlowVisual'
 import ProcessSteps from '../components/ProcessSteps'
-import ProjectShowcase from '../components/ProjectShowcase'
 import WhyIdeax from '../components/WhyIdeax'
 import JourneyTimeline from '../components/JourneyTimeline'
 import WhoIsThisFor from '../components/WhoIsThisFor'
@@ -21,7 +20,6 @@ import { curriculum } from '../data/curriculum'
 import { faqs } from '../data/faqs'
 import { contactInfo } from '../data/contact'
 import { staggerContainer, staggerItem, fadeUp } from '../utils/animations'
-import { Phone, Mail, MapPin, Globe } from 'lucide-react'
 import SkillsSection from '../components/SkillsSection'
 
 const heroLines = [['Build.'], ['Create.'], ['Innovate', 'with', 'AI.']]
@@ -241,21 +239,6 @@ export default function Home() {
 
       {/* WHAT YOU'LL BE ABLE TO DO */}
       <SkillsSection />
-
-      {/* PROJECT SHOWCASE */}
-      <section data-cursor-theme="dark" className="bg-ideax-black py-24 sm:py-32">
-        <div className="container-ideax">
-          <SectionTitle
-            dark
-            label="Project Showcase"
-            heading="Projects That Turn Knowledge Into Experience."
-            description="Real, practical builds that mirror the kind of applications modern development teams ship."
-          />
-          <div className="mt-14">
-            <ProjectShowcase />
-          </div>
-        </div>
-      </section>
 
       {/* WHY IDEAX */}
       <section id="why-ideax" className="bg-white py-24 sm:py-32">

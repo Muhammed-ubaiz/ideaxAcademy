@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { CheckCircle2, Loader2, MessageCircle } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+import Swal from 'sweetalert2'
 import Button from './Button'
 import { contactInfo } from '../data/contact'
 
@@ -53,8 +53,7 @@ ${values.message}`
 export default function ContactForm() {
   const [values, setValues] = useState(initialForm)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | submitting | success
-  const [whatsappUrl, setWhatsappUrl] = useState('')
+  const [status, setStatus] = useState('idle') // idle | submitting
 
   const handleChange = (field) => (e) => {
     setValues((v) => ({ ...v, [field]: e.target.value }))
@@ -70,45 +69,18 @@ export default function ContactForm() {
 
     setStatus('submitting')
 
-    window.setTimeout(() => {
-      const url = buildWhatsappUrl(values)
-      window.open(url, '_blank', 'noopener,noreferrer')
-      setWhatsappUrl(url)
-      setStatus('success')
-      setValues(initialForm)
-    }, 450)
-  }
+    const whatsappUrl = buildWhatsappUrl(values)
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
 
-  if (status === 'success') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center gap-4 rounded-xl2 border border-ideax-purple/25 bg-ideax-purple/5 px-8 py-16 text-center"
-      >
-        <CheckCircle2 size={40} className="text-ideax-purple" />
-        <h3 className="text-xl font-bold text-ideax-black">Enquiry Ready</h3>
-        <p className="max-w-sm text-sm text-ideax-black/60">
-          Your enquiry is ready. Continue in WhatsApp to send it to IDEAX Academy.
-        </p>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-xl2 bg-ideax-black px-5 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-ideax-purple"
-        >
-          <MessageCircle size={16} />
-          Open WhatsApp Again
-        </a>
-        <button
-          type="button"
-          onClick={() => setStatus('idle')}
-          className="text-sm font-semibold text-ideax-purple underline-offset-4 hover:underline"
-        >
-          Send another enquiry
-        </button>
-      </motion.div>
-    )
+    setValues(initialForm)
+    setStatus('idle')
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Enquiry Sent!',
+      text: 'Thank you for reaching out. We have opened WhatsApp so you can continue the conversation with IDEAX Academy.',
+      confirmButtonColor: '#8F00FF',
+    })
   }
 
   return (
@@ -185,8 +157,7 @@ export default function ContactForm() {
         }`}
       >
         {status === 'submitting' && <Loader2 size={16} className="animate-spin" />}
-        {status === 'idle' && 'Send Enquiry'}
-        {status === 'submitting' && 'Preparing Enquiry...'}
+        {status === 'idle' ? 'Send Enquiry' : 'Preparing Enquiry...'}
       </Button>
     </form>
   )

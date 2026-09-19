@@ -5,7 +5,6 @@ import SectionTitle from '../components/SectionTitle'
 import Button from '../components/Button'
 import LearningTimeline from '../components/LearningTimeline'
 import AIFlowVisual from '../components/AIFlowVisual'
-import ProjectShowcase from '../components/ProjectShowcase'
 import WhoIsThisFor from '../components/WhoIsThisFor'
 import FAQ from '../components/FAQ'
 import { faqs } from '../data/faqs'
@@ -155,20 +154,6 @@ export default function Program() {
           <Reveal delay={0.1} className="rounded-xl2 border border-ideax-black/10 bg-ideax-black p-2">
             <AIFlowVisual />
           </Reveal>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section data-cursor-theme="dark" className="bg-ideax-black py-24 sm:py-32">
-        <div className="container-ideax">
-          <SectionTitle
-            dark
-            label="Projects"
-            heading="Build Projects That Prove What You Can Do."
-          />
-          <div className="mt-14">
-            <ProjectShowcase />
-          </div>
         </div>
       </section>
 
